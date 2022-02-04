@@ -3,9 +3,7 @@ import number_repr as nr
 def assert_eq(a, b):
     assert a == b, "Expected {}, got {}".format(b, a)
 
-'''
-Test the functionality of number_repr
-'''
+
 def test_to_unsigned_binary_from_dec():
     assert_eq(nr.to_unsigned_binary_from_dec(0), [0, 0, 0, 0, 0, 0, 0, 0])
     assert_eq(nr.to_unsigned_binary_from_dec(1), [0, 0, 0, 0, 0, 0, 0, 1])
@@ -31,42 +29,42 @@ def test_to_twos_comp_binary_from_dec():
 
 def test_binary_add_unsigned():
     assert_eq(nr.binary_add_unsigned([0, 0, 0, 0, 0, 0, 0, 0],
-                                            [0, 0, 0, 0, 0, 0, 0, 0]),
-                                            [0, 0, 0, 0, 0, 0, 0, 0])
+                                     [0, 0, 0, 0, 0, 0, 0, 0]),
+                                     [0, 0, 0, 0, 0, 0, 0, 0])
     assert_eq(nr.binary_add_unsigned([0, 0, 0, 0, 0, 0, 0, 1],
-                                            [0, 0, 0, 0, 0, 0, 0, 0]),
-                                            [0, 0, 0, 0, 0, 0, 0, 1])
+                                     [0, 0, 0, 0, 0, 0, 0, 0]),
+                                     [0, 0, 0, 0, 0, 0, 0, 1])
     assert_eq(nr.binary_add_unsigned([0, 0, 0, 0, 1, 0, 1, 1],
-                                            [0, 0, 0, 0, 0, 0, 1, 0]),
-                                            [0, 0, 0, 0, 1, 1, 0, 1])
+                                     [0, 0, 0, 0, 0, 0, 1, 0]),
+                                     [0, 0, 0, 0, 1, 1, 0, 1])
     assert_eq(nr.binary_add_unsigned([0, 0, 1, 1, 1, 0, 1, 1],
-                                            [1, 0, 0, 0, 0, 0, 1, 0]),
-                                            [1, 0, 1, 1, 1, 1, 0, 1])
+                                     [1, 0, 0, 0, 0, 0, 1, 0]),
+                                     [1, 0, 1, 1, 1, 1, 0, 1])
 
 def test_binary_add_ones_comp():
     assert_eq(nr.binary_add_ones_comp([0, 0, 0, 0, 0, 0, 0, 0],
-                                             [0, 0, 0, 0, 0, 0, 0, 0]),
-                                             [0, 0, 0, 0, 0, 0, 0, 0])
+                                      [0, 0, 0, 0, 0, 0, 0, 0]),
+                                      [0, 0, 0, 0, 0, 0, 0, 0])
     assert_eq(nr.binary_add_ones_comp([1, 0, 1, 1, 1, 0, 1, 1],
-                                             [0, 1, 0, 0, 0, 1, 0, 0]),
-                                             [1, 1, 1, 1, 1, 1, 1, 1])
+                                      [0, 1, 0, 0, 0, 1, 0, 0]),
+                                      [1, 1, 1, 1, 1, 1, 1, 1])
     assert_eq(nr.binary_add_ones_comp([1, 1, 0, 1, 1, 0, 1, 1],
-                                             [1, 1, 0, 0, 1, 1, 0, 0]),
-                                             [1, 0, 1, 0, 1, 0, 0, 0])
+                                      [1, 1, 0, 0, 1, 1, 0, 0]),
+                                      [1, 0, 1, 0, 1, 0, 0, 0])
 
 def test_binary_add_twos_comp():
     assert_eq(nr.binary_add_twos_comp([0, 0, 0, 0, 0, 0, 0, 0],
-                                             [0, 0, 0, 0, 0, 0, 0, 0]),
-                                             [0, 0, 0, 0, 0, 0, 0, 0])
+                                      [0, 0, 0, 0, 0, 0, 0, 0]),
+                                      [0, 0, 0, 0, 0, 0, 0, 0])
     assert_eq(nr.binary_add_twos_comp([0, 0, 0, 0, 0, 0, 0, 1],
-                                             [0, 0, 0, 0, 0, 0, 0, 0]),
-                                             [0, 0, 0, 0, 0, 0, 0, 1])
+                                      [0, 0, 0, 0, 0, 0, 0, 0]),
+                                      [0, 0, 0, 0, 0, 0, 0, 1])
     assert_eq(nr.binary_add_twos_comp([0, 0, 0, 0, 1, 0, 1, 1],
-                                             [0, 0, 0, 0, 0, 0, 1, 0]),
-                                             [0, 0, 0, 0, 1, 1, 0, 1])
+                                      [0, 0, 0, 0, 0, 0, 1, 0]),
+                                      [0, 0, 0, 0, 1, 1, 0, 1])
     assert_eq(nr.binary_add_twos_comp([0, 0, 1, 1, 1, 0, 1, 1],
-                                             [1, 0, 0, 0, 0, 0, 1, 0]),
-                                             [1, 0, 1, 1, 1, 1, 0, 1])
+                                      [1, 0, 0, 0, 0, 0, 1, 0]),
+                                      [1, 0, 1, 1, 1, 1, 0, 1])
 
 def test_to_dec_from_ones_comp_binary():
     # test zero
