@@ -13,19 +13,19 @@ def test_to_sign_mag_binary_from_dec():
     assert_eq(nr.to_sign_mag_binary_from_dec(0), [0, 0, 0, 0, 0, 0, 0, 0])
     assert_eq(nr.to_sign_mag_binary_from_dec(1), [0, 0, 0, 0, 0, 0, 0, 1])
     assert_eq(nr.to_sign_mag_binary_from_dec(-15), [1, 0, 0, 0, 1, 1, 1, 1])
-    assert_eq(nr.to_sign_mag_binary_from_dec(-143), [1, 1, 0, 0, 0, 1, 1, 1, 1])
+    assert_eq(nr.to_sign_mag_binary_from_dec(-113), [1, 1, 1, 1, 0, 0, 0, 1])
 
 def test_to_ones_comp_binary_from_dec():
     assert_eq(nr.to_ones_comp_binary_from_dec(0), [0, 0, 0, 0, 0, 0, 0, 0])
     assert_eq(nr.to_ones_comp_binary_from_dec(1), [0, 0, 0, 0, 0, 0, 0, 1])
     assert_eq(nr.to_ones_comp_binary_from_dec(-15), [1, 1, 1, 1, 0, 0, 0, 0])
-    assert_eq(nr.to_ones_comp_binary_from_dec(-143), [1, 0, 1, 1, 1, 0, 0, 0, 0])
+    assert_eq(nr.to_ones_comp_binary_from_dec(-113), [1, 0, 0, 0, 1, 1, 1, 0])
 
 def test_to_twos_comp_binary_from_dec():
     assert_eq(nr.to_twos_comp_binary_from_dec(0), [0, 0, 0, 0, 0, 0, 0, 0])
     assert_eq(nr.to_twos_comp_binary_from_dec(1), [0, 0, 0, 0, 0, 0, 0, 1])
     assert_eq(nr.to_twos_comp_binary_from_dec(-15), [1, 1, 1, 1, 0, 0, 0, 1])
-    assert_eq(nr.to_twos_comp_binary_from_dec(-143), [0, 1, 1, 1, 0, 0, 0, 1])
+    assert_eq(nr.to_twos_comp_binary_from_dec(-113), [1, 0, 0, 0, 1, 1, 1, 1])
 
 def test_binary_add_unsigned():
     assert_eq(nr.binary_add_unsigned([0, 0, 0, 0, 0, 0, 0, 0],
