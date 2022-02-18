@@ -4,6 +4,7 @@ from gates import *
 def assert_eq(a, b):
     assert a == b, "Expected {}, got {}".format(b, a)
 
+
 def test_or():
     nodes = [Input('a'), Input('b'), Or('or_1'), Output('c')]
     edges = [('a', 'or_1'), ('b', 'or_1'), ('or_1', 'c')]
@@ -14,6 +15,7 @@ def test_or():
             outputs = sim.simulate(nodes, edges, inputs)
             assert_eq(outputs['c'], a | b)
   
+
 def test_and():
     nodes = [Input('a'), Input('b'), And('and_1'), Output('c')]
     edges = [('a', 'and_1'), ('b', 'and_1'), ('and_1', 'c')]
@@ -24,6 +26,7 @@ def test_and():
             outputs = sim.simulate(nodes, edges, inputs)
             assert_eq(outputs['c'], a & b)
 
+
 def test_not():
     nodes = [Input('a'), Not('not_1'), Output('c')]
     edges = [('a', 'not_1'), ('not_1', 'c')]
@@ -32,6 +35,7 @@ def test_not():
         inputs = {'a': a}
         outputs = sim.simulate(nodes, edges, inputs)
         assert_eq(outputs['c'], 1 - a)
+
 
 def test_xor():
     nodes = [Input('a'), Input('b'), Xor('xor_1'), Output('c')]
@@ -42,6 +46,28 @@ def test_xor():
             inputs = {'a': a, 'b': b}
             outputs = sim.simulate(nodes, edges, inputs)
             assert_eq(outputs['c'], a ^ b)
+
+
+def test_multiple_ands():
+    nodes = [
+        Input('a'), Input('b'), Input('c'), Input('d'),
+        And('and_1'), And('and_2'), And('and_3'),
+        Output('z')
+    ]
+    edges = [
+        ('a', 'and_1'), ('b', 'and_1'),
+        ('c', 'and_2'), ('d', 'and_2'),
+        ('and_1', 'and_3'), ('and_2', 'and_3'),
+        ('and_3', 'z')
+    ]
+    for a in [0, 1]:
+        for b in [0, 1]:
+            for c in [0, 1]:
+                for d in [0, 1]:
+                    inputs = {'a': a, 'b': b, 'c': c, 'd': d}
+                    outputs = sim.simulate(nodes, edges, inputs)
+                    assert_eq(outputs['z'], a & b & c & d)
+
 
 def test_mux_2_1():
     nodes = [
@@ -86,6 +112,7 @@ def test_demux_1_2():
             assert_eq(outputs['a'], z & ~s)
             assert_eq(outputs['b'], z & s)
 
+
 def test_half_adder():
     nodes = [
         Input('a'), Input('b'),
@@ -104,6 +131,7 @@ def test_half_adder():
             outputs = sim.simulate(nodes, edges, inputs)
             assert_eq(outputs['s'], a ^ b)
             assert_eq(outputs['c'], a & b)
+
 
 def test_full_adder():
     nodes = [
@@ -129,8 +157,18 @@ def test_full_adder():
                 assert_eq(outputs['s'], a ^ b ^ c_in)
                 assert_eq(outputs['c_out'], ((a ^ b) & c_in) | (a & b))
 
+
 def test_4_1_mux():
-    # TODO: Write out nodes and edges and test all possible inputs
+    # TODO: Implement a 4:1 multiplexer
+    # Write out nodes and edges and test all possible inputs
+
+    # remove this assert when you start working on it
+    assert False, "Not implemented yet!"
+
+
+def test_2_bit_adder():
+    # TODO: Implement a 2-bit adder (half adder + full adder)
+    # Write out nodes and edges and test all possible inputs
 
     # remove this assert when you start working on it
     assert False, "Not implemented yet!"
@@ -142,13 +180,15 @@ if __name__ == '__main__':
         test_and,
         test_not,
         test_xor,
+        test_multiple_ands,
         test_mux_2_1,
         test_demux_1_2,
         test_half_adder,
         test_full_adder,
 
-        # TODO: Implement the rest of the tests
+        # TODO: Implement these tests
         test_4_1_mux,
+        test_2_bit_adder,
     ]
  
     for test in tests:

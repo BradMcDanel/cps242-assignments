@@ -1,4 +1,5 @@
 # Boolean Logic Gates Types
+# You should not need to edit this file!
 class Node:
     def __init__(self, name, value=None):
         self.name = name
