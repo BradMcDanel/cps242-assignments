@@ -12,7 +12,7 @@ def simulate(nodes, edges, inputs):
     # This is the main function that runs the simulation.
     # It takes in a list of nodes, a list of edges, and a dictionary of inputs.
 
-    # 1. Set the input values for all the Input nodes.
+    # 1. Set the node.value for all the Input nodes using the inputs dictionary.
 
     # 2. While there are still nodes that have not been evaluated:
     #    a. For each node, get the inputs.
