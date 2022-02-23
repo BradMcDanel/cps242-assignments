@@ -18,9 +18,7 @@ def exit_check(inputs, prev_states):
 
 
 # And-Nor Gates
-def and_nor_loop():
-    x = 1
-    y = 1
+def and_nor_loop(x=1, y=1):
     print('***And-Nor Circuit w/ Loop***')
     prev_states = [(x, y)]
     for i in range(5):
@@ -77,8 +75,8 @@ def enumrate_gated_d_latch():
 
  
 if __name__=='__main__':
-    and_nor_loop()
-    print('\n')
+    # and_nor_loop()
+    # print('\n')
     enumrate_sr_latch()
-    print('\n')
-    enumrate_gated_d_latch()
+    # print('\n')
+    # enumrate_gated_d_latch()
