@@ -58,7 +58,7 @@ def gated_d_latch(d, e, q=1, qc=0):
         prev_states.append((q, qc))
 
 
-def enumrate_sr_latch():
+def enumerate_sr_latch():
     for r, s in [(0, 0), (0, 1), (1, 0), (1, 1)]:
         print(f'Enumerating: s={s}, r={r}')
         for q, qc in [(0, 0), (0, 1), (1, 0), (1, 1)]:
@@ -66,7 +66,7 @@ def enumrate_sr_latch():
             print()
 
 
-def enumrate_gated_d_latch():
+def enumerate_gated_d_latch():
     for d, e in [(0, 0), (0, 1), (1, 0), (1, 1)]:
         print(f'Enumerating: d={d}, e={e}')
         for q, qc in [(0, 0), (0, 1), (1, 0), (1, 1)]:
@@ -77,6 +77,6 @@ def enumrate_gated_d_latch():
 if __name__=='__main__':
     # and_nor_loop()
     # print('\n')
-    enumrate_sr_latch()
+    # enumerate_sr_latch()
     # print('\n')
-    # enumrate_gated_d_latch()
+    enumerate_gated_d_latch()
