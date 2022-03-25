@@ -1,0 +1,11 @@
+load r0 0x0
+mul r1 r0 r0
+store 0x1 r1
+mul r1 r1 r0
+store 0x2 r1
+mul r1 r1 r0
+store 0x3 r1
+mul r1 r1 r0
+store 0x4 r1
+mul r1 r1 r0
+store 0x5 r1
