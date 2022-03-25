@@ -1,4 +1,4 @@
-## Some notes on how programs are formatted:
+## Some notes on how ALU programs are formatted:
 * Register names map to indexes as follow:
   * `r0 -> 00`
   * `r1 -> 01`
