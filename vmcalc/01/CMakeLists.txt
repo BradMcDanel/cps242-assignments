@@ -8,4 +8,5 @@ include_directories(include)
 
 add_executable(vmcalc
   src/main.c
+  src/io.c
 )
