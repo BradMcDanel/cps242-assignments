@@ -13,5 +13,6 @@ int main(void) {
     Point p;
     p.x = 1;
     p.y = 2;
+    print_point(p);
     return 0;
 }
