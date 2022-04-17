@@ -13,9 +13,10 @@ typedef enum {
 
 typedef struct {
   uint8_t code[MAX_PROGRAM_SIZE];
-} Chunk;
+} Program;
 
-static int program_counter = 0;
+Program program = {0};
+int program_counter = 0;
 
 int main(int argc, char *argv[]) {
   char *filename = argv[1];
