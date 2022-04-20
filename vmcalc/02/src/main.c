@@ -16,7 +16,7 @@ typedef enum {
 } OpCode;
 
 typedef struct {
-  int constant;
+  int value;
 } Value;
 
 typedef struct {
@@ -51,7 +51,7 @@ void print_program(Program *program) {
   printf("\n");
   printf("===== Constants =====\n");
   for (int i = 0; i < program->constant_length; i++) {
-    printf("%d ", program->constants[i].constant);
+    printf("%d ", program->constants[i].value);
   }
   printf("\n");
   printf("===== End =====\n\n");
@@ -64,7 +64,7 @@ Program generate_program(char *filename) {
   while (word != NULL) {
     if (is_number(word)) {
       int constant = atoi(word);
-      int constant_idx = add_constant(&program, (Value){.constant = constant});
+      int constant_idx = add_constant(&program, (Value){.value = constant});
       add_code(&program, OP_CONSTANT);
       add_code(&program, constant_idx);
     } else if (str_equals(word, "+")) {
@@ -93,13 +93,13 @@ void run_program(Program *program) {
     case OP_ADD: {
       Value v1 = vm.stack[--vm.sp];
       Value v2 = vm.stack[--vm.sp];
-      Value result = (Value){.constant = v1.constant + v2.constant};
+      Value result = (Value){.value = v1.value + v2.value};
       vm.stack[vm.sp++] = result;
       break;
     }
     case OP_PRINT: {
       Value v = vm.stack[--vm.sp];
-      printf("%d\n", v.constant);
+      printf("%d\n", v.value);
       break;
     }
     }

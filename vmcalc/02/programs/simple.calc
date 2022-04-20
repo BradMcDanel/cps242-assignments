@@ -1,8 +1,1 @@
 ((((1 3 +) (4 44 +) +) 1 +) print)
-
-label_1:
-(5 a assign)
-(4 b assign)
-((a b >) label_1 if)
-(2 3 +)
-

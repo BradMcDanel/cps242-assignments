@@ -16,7 +16,7 @@ typedef enum {
 } OpCode;
 
 typedef struct {
-  int constant;
+  int value;
 } Value;
 
 typedef struct {
@@ -51,7 +51,7 @@ void print_program(Program *program) {
   printf("\n");
   printf("===== Constants =====\n");
   for (int i = 0; i < program->constant_length; i++) {
-    printf("%d ", program->constants[i].constant);
+    printf("%d ", program->constants[i].value);
   }
   printf("\n");
   printf("===== End =====\n\n");

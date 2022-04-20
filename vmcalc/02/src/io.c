@@ -77,20 +77,13 @@ bool str_equals(char *str1, char *str2) {
     }
     i++;
   }
+
+  if (str1[i] != str2[i]) {
+    return false;
+  }
+
   return true;
 }
-
-bool str_in_list(char *str, char **list) {
-  while (*list != NULL) {
-    if (str_equals(str, *list)) {
-      return true;
-    }
-    list++;
-  }
-  return false;
-}
-
-bool is_keyword(char *str, char **list) { return str_in_list(str, list); }
 
 bool is_variable(char *str) {
   // must start with a letter a-z or A-Z
