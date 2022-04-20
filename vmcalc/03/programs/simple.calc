@@ -1,0 +1,5 @@
+(3 a assign)
+((a 2 +) b assign)
+(a print)
+(b print)
+
