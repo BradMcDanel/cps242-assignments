@@ -76,9 +76,14 @@ Program generate_program(char *filename) {
       add_code(&program, OP_ADD);
     } else if (str_equals(word, "print")) {
       add_code(&program, OP_PRINT);
+    } else if (str_equals(word, "assign")) {
+      add_code(&program, OP_ASSIGN);
+    } else if (is_variable(word)) {
+      int idx = get_variable_index(program.variables, &program.variable_length, word);
+      add_code(&program, OP_VARIABLE);
+      add_code(&program, idx);
     }
 
-    // TODO: handle variables (is_variable) and "assign"
 
     // This advances to the next word (don't remove!)
     word = next_word(&str);
@@ -110,7 +115,18 @@ void run_program(Program *program) {
       printf("%d\n", v.value);
       break;
     }
-    // TODO: handle OP_VARIABLE and OP_ASSIGN
+    case OP_VARIABLE: {
+      uint8_t variable_idx = program->code[++vm.pc];
+      vm.stack[vm.sp++] = (Value){.type = VT_VARIABLE, .value = variable_idx};
+      break;
+    }
+    case OP_ASSIGN: {
+      uint8_t var_idx = (uint8_t)vm.stack[--vm.sp].value;
+      char* name = program->variables[var_idx];
+      Value value = vm.stack[--vm.sp];
+      set_variable(vm.variables, &vm.variable_length, name, &value);
+      break;
+    }
     }
   }
 }
