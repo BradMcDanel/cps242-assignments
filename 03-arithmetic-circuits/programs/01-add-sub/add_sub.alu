@@ -1,6 +1,0 @@
-load r0 0x0
-load r1 0x1
-load r2 0x2
-sub r3 r2 r1
-add r3 r3 r0
-store 0x3 r3
